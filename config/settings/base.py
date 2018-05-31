@@ -10,36 +10,50 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
-import os
+import environ
+
+import django.conf.locale
+from django.conf import global_settings
+from django.utils.translation import ugettext_lazy as _
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT_DIR = environ.Path(__file__) - 3
+
+env = environ.Env()
+
+READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=True)
+
+if READ_DOT_ENV_FILE:
+    env_file = str(ROOT_DIR.path(".env"))
+    print("Loading : {}".format(env_file))
+    env.read_env(env_file)
+    print("The .env file has been loaded. See base.py for more information")
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
+DEBUG = env.bool("DJANGO_DEBUG", False)
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "xxx(_*5xjj=!9^&ht!a-b$27k-umx2xrfvf#c=d0dm2whf!lvz"
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEFAULT_SECRET_KEY = "please-change-me"
+SECRET_KEY = environ.get("SECRET_KEY") or DEFAULT_SECRET_KEY
 
 ALLOWED_HOSTS = []
 
-
-# Application definition
-
-INSTALLED_APPS = [
+DJANGO_APPS = (
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-]
+)
 
-MIDDLEWARE = [
+THIRD_PARTY_APPS = ()
+
+LOCAL_APPS = ("randomrapidpro",)
+
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+
+MIDDLEWARE = (
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -47,7 +61,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-]
+)
 
 ROOT_URLCONF = "lebombo.urls"
 
@@ -97,16 +111,39 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
-
-TIME_ZONE = "UTC"
-
+LANGUAGE_CODE = environ.get("LANGUAGE_CODE", "en")
+TIME_ZONE = "Africa/Johannesburg"
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
+# TODO: extract this into a reusable python package
+# Native South African languages are currently not included in the default
+# list of languges in django
+# https://github.com/django/django/blob/master/django/conf/global_settings.py#L50
+LANGUAGES = global_settings.LANGUAGES + [
+    ("zu", _("Zulu")),
+    ("xh", _("Xhosa")),
+    ("st", _("Sotho")),
+    ("ve", _("Venda")),
+    ("tn", _("Tswana")),
+    ("ts", _("Tsonga")),
+    ("ss", _("Swati")),
+    ("nr", _("Ndebele")),
+]
+
+EXTRA_LANG_INFO = {
+    "zu": {"bidi": False, "code": "zu", "name": "Zulu", "name_local": "isiZulu"},
+    "xh": {"bidi": False, "code": "xh", "name": "Xhosa", "name_local": "isiXhosa"},
+    "st": {"bidi": False, "code": "st", "name": "Sotho", "name_local": "seSotho"},
+    "ve": {"bidi": False, "code": "ve", "name": "Venda", "name_local": u"tshiVenḓa"},
+    "tn": {"bidi": False, "code": "tn", "name": "Tswana", "name_local": "Setswana"},
+    "ts": {"bidi": False, "code": "ts", "name": "Tsonga", "name_local": "xiTsonga"},
+    "ss": {"bidi": False, "code": "ss", "name": "Swati", "name_local": "siSwati"},
+    "nr": {"bidi": False, "code": "nr", "name": "Ndebele", "name_local": "isiNdebele"},
+}
+
+django.conf.locale.LANG_INFO.update(EXTRA_LANG_INFO)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
