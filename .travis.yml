@@ -13,7 +13,6 @@ script:
 
 jobs:
   include:
-    - stage: test
     - python: "3.6"
       # Clear unused build steps
       services: []
