@@ -13,7 +13,7 @@ repos:
     hooks:
       - id: flake8
         args: [--max-line-length=88, --ignore=F405]
-        files: ^(manage|config/.*)\.py$
+        files: ^.*\.py$
 
   - repo: https://github.com/adrienverge/yamllint
     rev: master
