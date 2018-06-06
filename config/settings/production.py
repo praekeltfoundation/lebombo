@@ -1,34 +1,33 @@
-from .base import *
-
-import environ
-
-from django.core.exceptions import ImproperlyConfigured
+from .base import *  # noqa
+from .base import env
 
 
 DEBUG = False
 
-# configure Sentry Logging
-INSTALLED_APPS += ("raven.contrib.django.raven_compat")
-RAVEN_DSN = environ.get("RAVEN_DSN")
+# Raises ImproperlyConfigured exception if SECRET_KEY not in os.environ
+SECRET_KEY = env.str("SECRET_KEY")
+
+ALLOWED_HOSTS = env.str("ALLOWED_HOSTS").split(",")
+
+# Configure Sentry Logging
+INSTALLED_APPS += ("raven.contrib.django.raven_compat",)
+RAVEN_DSN = env.str("RAVEN_DSN", False)
 RAVEN_CONFIG = {"dsn": RAVEN_DSN} if RAVEN_DSN else {}
 
-if SECRET_KEY == DEFAULT_SECRET_KEY:  # noqa: F405
-    raise ImproperlyConfigured("SECRET_KEY is set to default value")
-
 DATABASES = {
-    "default": dj_database_url.config(
+    "default": env.db(
+        var="DATABASE_URL",
         default="postgres://{USER}:{PASSWORD}@{HOST}:{PORT}/{NAME}".format(
-            {
-                "NAME": "postgres",
-                "HOST": "postgres",
-                "USER": "db",
-                "PASSWORD": "postgres",
-                "PORT": 5432,
+            **{
+                "USER": env.str("DB_USER", "lebombo"),
+                "PASSWORD": env.str("DB_PASSWORD", "lebombo"),
+                "HOST": env.str("DB_HOST", "localhost"),
+                "PORT": env.str("DB_PORT", ""),
+                "NAME": env.str("DB_NAME", "lebombo"),
             }
-        )
+        ),
     )
 }
 
-MEDIA_ROOT = join(PROJECT_ROOT, "media")
-
-STATIC_ROOT = join(PROJECT_ROOT, "static")
+MEDIA_ROOT = join(ROOT_DIR, "media")
+STATIC_ROOT = join(ROOT_DIR, "static")

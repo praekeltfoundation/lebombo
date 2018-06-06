@@ -12,29 +12,16 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import environ
 
-import django.conf.locale
+from os.path import join
 from django.conf import global_settings
+from django.conf.locale import LANG_INFO
 from django.utils.translation import ugettext_lazy as _
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-ROOT_DIR = environ.Path(__file__) - 3
+root = environ.Path(__file__) - 3
+env = environ.Env(DEBUG=(bool, False))
 
-env = environ.Env()
-
-READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=True)
-
-if READ_DOT_ENV_FILE:
-    env_file = str(ROOT_DIR.path(".env"))
-    print("Loading : {}".format(env_file))
-    env.read_env(env_file)
-    print("The .env file has been loaded. See base.py for more information")
-
-
-DEBUG = env.bool("DJANGO_DEBUG", False)
-
-# SECURITY WARNING: keep the secret key used in production secret!
-DEFAULT_SECRET_KEY = "please-change-me"
-SECRET_KEY = environ.get("SECRET_KEY") or DEFAULT_SECRET_KEY
+ROOT_DIR = root()
+environ.Env.read_env(join(ROOT_DIR, ".env"))
 
 ALLOWED_HOSTS = []
 
@@ -49,7 +36,7 @@ DJANGO_APPS = (
 
 THIRD_PARTY_APPS = ()
 
-LOCAL_APPS = ("randomrapidpro",)
+LOCAL_APPS = ()
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
@@ -63,7 +50,7 @@ MIDDLEWARE = (
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 )
 
-ROOT_URLCONF = "lebombo.urls"
+ROOT_URLCONF = "config.urls"
 
 TEMPLATES = [
     {
@@ -81,18 +68,11 @@ TEMPLATES = [
     }
 ]
 
-WSGI_APPLICATION = "lebombo.wsgi.application"
+WSGI_APPLICATION = "config.wsgi.application"
 
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-    }
-}
 
 
 # Password validation
@@ -100,7 +80,10 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
+        "NAME": (
+            "django.contrib.auth.password_validation."
+            "UserAttributeSimilarityValidator"
+        )
     },
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
@@ -111,16 +94,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = environ.get("LANGUAGE_CODE", "en")
+LANGUAGE_CODE = env.str("LANGUAGE_CODE", "en")
 TIME_ZONE = "Africa/Johannesburg"
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-# TODO: extract this into a reusable python package
-# Native South African languages are currently not included in the default
-# list of languges in django
-# https://github.com/django/django/blob/master/django/conf/global_settings.py#L50
 LANGUAGES = global_settings.LANGUAGES + [
     ("zu", _("Zulu")),
     ("xh", _("Xhosa")),
@@ -143,7 +122,7 @@ EXTRA_LANG_INFO = {
     "nr": {"bidi": False, "code": "nr", "name": "Ndebele", "name_local": "isiNdebele"},
 }
 
-django.conf.locale.LANG_INFO.update(EXTRA_LANG_INFO)
+LANG_INFO.update(EXTRA_LANG_INFO)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
