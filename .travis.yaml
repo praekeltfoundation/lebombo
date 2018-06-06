@@ -1,0 +1,21 @@
+sudo: false  # Force container-based builds.
+language: python
+
+cache:
+  - pip
+before_install:
+  - pip install --upgrade pip
+install:
+  - pip install -e .
+  - pip install -r requirements/dev.txt
+script:
+  - flake8
+
+jobs:
+  include:
+    - stage: test
+    - python: "3.6"
+      # Clear unused build steps
+      services: []
+      deploy: []
+      after_success: []
