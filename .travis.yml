@@ -9,12 +9,50 @@ install:
   - pip install -e .
   - pip install -r requirements/dev.txt
 script:
-  - flake8
+  - black . --check
+  - flake8 --max-line-length=88 --ignore=F405
 
 jobs:
   include:
-    - python: "3.6"
+    - stage: test
+      python: "3.6"
       # Clear unused build steps
       services: []
       deploy: []
+      after_success: []
+    - stage: docker
+      python: "3.6"
+      sudo: required
+      dist: trusty
+      services: [docker]
+      env:
+        - IMAGE_NAME=praekeltfoundation/lebombo
+        - REGISTRY_USER=praekeltorgdeploy
+        - secure: "guA2P1DoFKyrA5gmA2Po1OVMqRUcBcGeskeeF/DrRbTc+9Gb6CcdL+EKNMYZFjsb2x/EmKxIkRNPOcjudbE5+nWPqIxpzWG+TUoBuK3QNLQLIRaNafaROToN9z+A7DIURWuHDW3rXPPz0yCVvc6DPfeROciVSAPQlMLH5DSO4t9wIzvlpifhUv2kq+xym7XY3ldtrXeI+s6ZE544L1SomxnDE4ZKF/G7ddU7VJujTlMof2OgaOQY+P28z0ksVBIOKwNXPtqdQL74pshODCO1/YQaBf9hxfMWi/BighTW27MoyJrSFhKgW+MO5cGSbb2BPaS1eYarBXF7d+RI7Bntb6pcG0QfNj8XSKSuFDC7ki+dCPdlEjAGpq+4LDbQs0knMnWvY59ve6KYUHcLaiQ0Y6Gf/opCjv8Ct/4dQMRZxQm3DRP0cCOsI2kk/puaO6IPBaQA8yOw4QsvmDZ5pV6Aok6UIBofP2f0wzuX497sseR6M+S/xQ8yJfIQDPFmMjRq9IC1eXkxDJHjVnqa2Wb07Ys2Edx57/Li3/GdcxNvk/PwGWtkjvUuogMKqRv5yJBeffnGDPLDFLl/kSqPpfGHR7jolo0fOITmoGVLG/Ur/CNzQmnG93blmPqTL2KxuwyAIW7Tk/HXsfgFjsKvbkj8/x46/x4aT80vbFphzTPXkSQ=" # yamllint disable-line
+
+      # Update Docker: we want some new docker build features
+      install:
+        - sudo apt-get update
+        - sudo apt-get install -y -o Dpkg::Options::="--force-confold" docker-ce
+
+      before_script:
+        - docker pull "$IMAGE_NAME" || true
+      script:
+        - docker build --pull --tag "$IMAGE_NAME" .
+
+      before_deploy:
+        - pip install docker-ci-deploy==0.3.0
+        - echo -n $REGISTRY_PASS | docker login -u "$REGISTRY_USER" --password-stdin # yamllint disable-line
+      deploy:
+        - provider: script
+          script: dcd --version "$(git rev-parse --short HEAD)" --version-latest "$IMAGE_NAME" # yamllint disable-line
+          on:
+            branch: develop
+        - provider: script
+          script: dcd --tag "$TRAVIS_TAG" -- "$IMAGE_NAME"
+          on:
+            tags: true
+
+      # Built steps inherited from the default stage that we don't want
+      before_install: ignore
       after_success: []
