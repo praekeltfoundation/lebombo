@@ -178,5 +178,10 @@ ENV/
 
 .vscode/
 *.sqlite3
+*.sqlite4
 node_modules/
 __pycache__
+
+local.py
+/static/
+/media/
