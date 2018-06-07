@@ -28,6 +28,3 @@ DATABASES = {
         ),
     )
 }
-
-MEDIA_ROOT = join(ROOT_DIR, "media")
-STATIC_ROOT = join(ROOT_DIR, "static")
