@@ -31,11 +31,6 @@ jobs:
         - REGISTRY_USER=praekeltorgdeploy
         - secure: "guA2P1DoFKyrA5gmA2Po1OVMqRUcBcGeskeeF/DrRbTc+9Gb6CcdL+EKNMYZFjsb2x/EmKxIkRNPOcjudbE5+nWPqIxpzWG+TUoBuK3QNLQLIRaNafaROToN9z+A7DIURWuHDW3rXPPz0yCVvc6DPfeROciVSAPQlMLH5DSO4t9wIzvlpifhUv2kq+xym7XY3ldtrXeI+s6ZE544L1SomxnDE4ZKF/G7ddU7VJujTlMof2OgaOQY+P28z0ksVBIOKwNXPtqdQL74pshODCO1/YQaBf9hxfMWi/BighTW27MoyJrSFhKgW+MO5cGSbb2BPaS1eYarBXF7d+RI7Bntb6pcG0QfNj8XSKSuFDC7ki+dCPdlEjAGpq+4LDbQs0knMnWvY59ve6KYUHcLaiQ0Y6Gf/opCjv8Ct/4dQMRZxQm3DRP0cCOsI2kk/puaO6IPBaQA8yOw4QsvmDZ5pV6Aok6UIBofP2f0wzuX497sseR6M+S/xQ8yJfIQDPFmMjRq9IC1eXkxDJHjVnqa2Wb07Ys2Edx57/Li3/GdcxNvk/PwGWtkjvUuogMKqRv5yJBeffnGDPLDFLl/kSqPpfGHR7jolo0fOITmoGVLG/Ur/CNzQmnG93blmPqTL2KxuwyAIW7Tk/HXsfgFjsKvbkj8/x46/x4aT80vbFphzTPXkSQ=" # yamllint disable-line
 
-      # Update Docker: we want some new docker build features
-      install:
-        - sudo apt-get update
-        - sudo apt-get install -y -o Dpkg::Options::="--force-confold" docker-ce
-
       before_script:
         - docker pull "$IMAGE_NAME" || true
       script:
