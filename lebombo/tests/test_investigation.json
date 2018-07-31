@@ -1,0 +1,540 @@
+{
+    "investigation_key": "rp_investigation_1_survey_id",
+    "question_order_key": "rp_investigation_1_question_order",
+    "url": "http://wa-rapidpro.qa.mhealthengagementlab.org",
+    "surveys": {
+        "inv_1__survey_1": {
+            "inv_1__survey_1__question_1": {
+                "text": "Circumcision is good?\n1)Agree\n2)Disagree",
+                "validators": [
+                    {
+                        "validator_id": "agree",
+                        "order": 1
+                    },
+                    {
+                        "validator_id": "disagree",
+                        "order": 2
+                    }
+                ]
+            },
+            "inv_1__survey_1__question_2": {
+                "text": "Breastfeeding is good\n1)Agree\n2)Disagree",
+                "validators": [
+                    {
+                        "validator_id": "agree",
+                        "order": 1
+                    },
+                    {
+                        "validator_id": "disagree",
+                        "order": 2
+                    }
+                ]
+            },
+            "inv_1__survey_1__question_3": {
+                "text": "What is your favourite color?\n1)Blue\n2)Yellow\n3)Red",
+                "validators": [
+                    {
+                        "validator_id": "blue",
+                        "order": 1
+                    },
+                    {
+                        "validator_id": "yellow",
+                        "order": 2
+                    },
+                    {
+                        "validator_id": "red",
+                        "order": 3
+                    }
+                ]
+            },
+            "inv_1__survey_1__question_4": {
+                "text": "What is your favourite fruit?\n1)Apple\n2)Pear\n3)Banana",
+                "validators": [
+                    {
+                        "validator_id": "apple",
+                        "order": 1
+                    },
+                    {
+                        "validator_id": "pear",
+                        "order": 2
+                    },
+                    {
+                        "validator_id": "banana",
+                        "order": 3
+                    }
+                ]
+            },
+            "inv_1__survey_1__question_5": {
+                "text": "What is your age?\n1)0-12\n2)13-30\n3)31+",
+                "validators": [
+                    {
+                        "validator_id": "age_bracket_1",
+                        "order": 1
+                    },
+                    {
+                        "validator_id": "age_bracket_2",
+                        "order": 2
+                    },
+                    {
+                        "validator_id": "age_bracket_3",
+                        "order": 3
+                    }
+                ]
+            }
+        },
+        "inv_1__survey_2": {
+            "inv_1__survey_2__question_1": {
+                "text": "Circumcision is good?\n1)Disagree\n2)Agree",
+                "validators": [
+                    {
+                        "validator_id": "disagree",
+                        "order": 1
+                    },
+                    {
+                        "validator_id": "agree",
+                        "order": 2
+                    }
+                ]
+            },
+            "inv_1__survey_2__question_2": {
+                "text": "Breastfeeding is good\n1)Disagree\n2)Agree",
+                "validators": [
+                    {
+                        "validator_id": "disagree",
+                        "order": 1
+                    },
+                    {
+                        "validator_id": "agree",
+                        "order": 2
+                    }
+                ]
+            },
+            "inv_1__survey_2__question_3": {
+                "text": "What is your favourite color?\n1)Red\n2)Blue\n3)Yellow",
+                "validators": [
+                    {
+                        "validator_id": "red",
+                        "order": 1
+                    },
+                    {
+                        "validator_id": "blue",
+                        "order": 2
+                    },
+                    {
+                        "validator_id": "yellow",
+                        "order": 3
+                    }
+                ]
+            },
+            "inv_1__survey_2__question_4": {
+                "text": "What is your favourite fruit?\n1)Banana\n2)Apple\n3)Pear",
+                "validators": [
+                    {
+                        "validator_id": "banana",
+                        "order": 1
+                    },
+                    {
+                        "validator_id": "apple",
+                        "order": 2
+                    },
+                    {
+                        "validator_id": "pear",
+                        "order": 3
+                    }
+                ]
+            },
+            "inv_1__survey_2__question_5": {
+                "text": "What is your age?\n1)0-12\n2)13-30\n3)31+",
+                "validators": [
+                    {
+                        "validator_id": "age_bracket_1",
+                        "order": 1
+                    },
+                    {
+                        "validator_id": "age_bracket_2",
+                        "order": 2
+                    },
+                    {
+                        "validator_id": "age_bracket_3",
+                        "order": 3
+                    }
+                ]
+            }
+        },
+        "inv_1__survey_3": {
+            "inv_1__survey_3__question_1": {
+                "text": "Circumcision is good?\n1)Disagree\n2)Agree",
+                "validators": [
+                    {
+                        "validator_id": "disagree",
+                        "order": 1
+                    },
+                    {
+                        "validator_id": "agree",
+                        "order": 2
+                    }
+                ]
+            },
+            "inv_1__survey_3__question_2": {
+                "text": "Breastfeeding is good\n1)Disagree\n2)Agree",
+                "validators": [
+                    {
+                        "validator_id": "disagree",
+                        "order": 1
+                    },
+                    {
+                        "validator_id": "agree",
+                        "order": 2
+                    }
+                ]
+            },
+            "inv_1__survey_3__question_3": {
+                "text": "What is your favourite color?\n1)Yellow\n2)Red\n3)Blue",
+                "validators": [
+                    {
+                        "validator_id": "yellow",
+                        "order": 1
+                    },
+                    {
+                        "validator_id": "red",
+                        "order": 2
+                    },
+                    {
+                        "validator_id": "blue",
+                        "order": 3
+                    }
+                ]
+            },
+            "inv_1__survey_3__question_4": {
+                "text": "What is your favourite fruit?\n1)Pear\n2)Banana\n3)Apple",
+                "validators": [
+                    {
+                        "validator_id": "pear",
+                        "order": 1
+                    },
+                    {
+                        "validator_id": "banana",
+                        "order": 2
+                    },
+                    {
+                        "validator_id": "apple",
+                        "order": 3
+                    }
+                ]
+            },
+            "inv_1__survey_3__question_5": {
+                "text": "What is your age?\n1)31+\n2)13-30\n3)0-12",
+                "validators": [
+                    {
+                        "validator_id": "age_bracket_3",
+                        "order": 1
+                    },
+                    {
+                        "validator_id": "age_bracket_2",
+                        "order": 2
+                    },
+                    {
+                        "validator_id": "age_bracket_1",
+                        "order": 3
+                    }
+                ]
+            }
+        },
+        "inv_1__survey_4": {
+            "inv_1__survey_4__question_1": {
+                "text": "ulwaluko luhle?\n1)Hayi\n2)Ewe",
+                "validators": [
+                    {
+                        "validator_id": "disagree_xh",
+                        "order": 1
+                    },
+                    {
+                        "validator_id": "agree_xh",
+                        "order": 2
+                    }
+                ]
+            },
+            "inv_1__survey_4__question_2": {
+                "text": "ukuncelisa luhle?\n1)Hayi\n2)Ewe",
+                "validators": [
+                    {
+                        "validator_id": "disagree_xh",
+                        "order": 1
+                    },
+                    {
+                        "validator_id": "agree_xh",
+                        "order": 2
+                    }
+                ]
+            },
+            "inv_1__survey_4__question_3": {
+                "text": "yintoni umbala owuthandayo?\n1)luhlaza\n2)bomvu\n3)lubhelu",
+                "validators": [
+                    {
+                        "validator_id": "red_xh",
+                        "order": 1
+                    },
+                    {
+                        "validator_id": "blue_xh",
+                        "order": 2
+                    },
+                    {
+                        "validator_id": "yellow_xh",
+                        "order": 3
+                    }
+                ]
+            },
+            "inv_1__survey_4__question_4": {
+                "text": "yintoni isiqhamo sakho ozithandayo?\n1)apile\n2)ipere\n3)ibhanana",
+                "validators": [
+                    {
+                        "validator_id": "apple_xh",
+                        "order": 1
+                    },
+                    {
+                        "validator_id": "pear_xh",
+                        "order": 2
+                    },
+                    {
+                        "validator_id": "banana_xh",
+                        "order": 3
+                    }
+                ]
+            },
+            "inv_1__survey_4__question_5": {
+                "text": "Ingaba umngakanani?\n1)0-12\n2)13-30\n3)31+",
+                "validators": [
+                    {
+                        "validator_id": "age_bracket_1",
+                        "order": 1
+                    },
+                    {
+                        "validator_id": "age_bracket_2",
+                        "order": 2
+                    },
+                    {
+                        "validator_id": "age_bracket_3",
+                        "order": 3
+                    }
+                ]
+            }
+        },
+        "inv_1__survey_5": {
+            "inv_1__survey_5__question_1": {
+                "text": "ulwaluko luhle?\n1)Hayi\n2)Ewe",
+                "validators": [
+                    {
+                        "validator_id": "disagree_xh",
+                        "order": 1
+                    },
+                    {
+                        "validator_id": "agree_xh",
+                        "order": 2
+                    }
+                ]
+            },
+            "inv_1__survey_5__question_2": {
+                "text": "ukuncelisa luhle?\n1)Ewe\n2)Hayi",
+                "validators": [
+                    {
+                        "validator_id": "agree_xh",
+                        "order": 1
+                    },
+                    {
+                        "validator_id": "disagree_xh",
+                        "order": 2
+                    }
+                ]
+            },
+            "inv_1__survey_5__question_3": {
+                "text": "yintoni umbala owuthandayo?\n1)bomvu\n2)luhlaza\n3)lubhelu",
+                "validators": [
+                    {
+                        "validator_id": "red_xh",
+                        "order": 1
+                    },
+                    {
+                        "validator_id": "blue_xh",
+                        "order": 2
+                    },
+                    {
+                        "validator_id": "yellow_xh",
+                        "order": 3
+                    }
+                ]
+            },
+            "inv_1__survey_5__question_4": {
+                "text": "yintoni isiqhamo sakho ozithandayo?\n1)ipere\n2)ibhanana\n3)apile",
+                "validators": [
+                    {
+                        "validator_id": "pear_xh",
+                        "order": 1
+                    },
+                    {
+                        "validator_id": "banana_xh",
+                        "order": 2
+                    },
+                    {
+                        "validator_id": "apple_xh",
+                        "order": 3
+                    }
+                ]
+            },
+            "inv_1__survey_5__question_5": {
+                "text": "Ingaba umngakanani?\n1)0-12\n2)13-30\n3)31+",
+                "validators": [
+                    {
+                        "validator_id": "age_bracket_1",
+                        "order": 1
+                    },
+                    {
+                        "validator_id": "age_bracket_2",
+                        "order": 2
+                    },
+                    {
+                        "validator_id": "age_bracket_3",
+                        "order": 3
+                    }
+                ]
+            }
+        },
+        "inv_1__survey_6": {
+            "inv_1__survey_6__question_1": {
+                "text": "ulwaluko luhle?\n1)Hayi\n2)Ewe",
+                "validators": [
+                    {
+                        "validator_id": "disagree_xh",
+                        "order": 1
+                    },
+                    {
+                        "validator_id": "agree_xh",
+                        "order": 2
+                    }
+                ]
+            },
+            "inv_1__survey_6__question_2": {
+                "text": "ukuncelisa luhle?\n1)Ewe\n2)Hayi",
+                "validators": [
+                    {
+                        "validator_id": "disagree_xh",
+                        "order": 1
+                    },
+                    {
+                        "validator_id": "agree_xh",
+                        "order": 2
+                    }
+                ]
+            },
+            "inv_1__survey_6__question_3": {
+                "text": "yintoni umbala owuthandayo?\n1)bomvu\n2)luhlaza\n3)lubhelu",
+                "validators": [
+                    {
+                        "validator_id": "red_xh",
+                        "order": 1
+                    },
+                    {
+                        "validator_id": "blue_xh",
+                        "order": 2
+                    },
+                    {
+                        "validator_id": "yellow_xh",
+                        "order": 3
+                    }
+                ]
+            },
+            "inv_1__survey_6__question_4": {
+                "text": "yintoni isiqhamo sakho ozithandayo?\n1)ipere\n2)ibhanana\n3)apile",
+                "validators": [
+                    {
+                        "validator_id": "pear_xh",
+                        "order": 1
+                    },
+                    {
+                        "validator_id": "banana_xh",
+                        "order": 2
+                    },
+                    {
+                        "validator_id": "apple_xh",
+                        "order": 3
+                    }
+                ]
+            },
+            "inv_1__survey_6__question_5": {
+                "text": "Ingaba umngakanani?\n1)31+\n2)13-30\n3)0-12",
+                "validators": [
+                    {
+                        "validator_id": "age_bracket_3",
+                        "order": 1
+                    },
+                    {
+                        "validator_id": "age_bracket_2",
+                        "order": 2
+                    },
+                    {
+                        "validator_id": "age_bracket_1",
+                        "order": 3
+                    }
+                ]
+            }
+        }
+    },
+    "validators": {
+        "age_bracket_1":{
+            "is_numeric": 1
+        },
+        "age_bracket_2":{
+            "is_numeric": 1
+        },
+        "age_bracket_3":{
+            "is_numeric": 1
+        },
+        "agree":{
+            "options": ["agree", "yes"]
+        },
+        "agree_xh":{
+            "options": ["ewe"]
+        },
+        "apple":{
+            "options": ["apple"]
+        },
+        "apple_xh":{
+            "options": ["apile"]
+        },
+        "banana":{
+            "options": ["banana"]
+        },
+        "banana_xh":{
+            "options": ["ibhanana"]
+        },
+        "blue":{
+            "options": ["blue"]
+        },
+        "blue_xh":{
+            "options": ["bomvu"]
+        },
+        "disagree":{
+            "options": ["disagree", "no"]
+        },
+        "disagree_xh":{
+            "options": ["hayi"]
+        },
+        "pear":{
+            "options": ["pear"]
+        },
+        "pear_xh":{
+            "options": ["ipere"]
+        },
+        "red":{
+            "options": ["red"]
+        },
+        "red_xh":{
+            "options": ["bomvu"]
+        },
+        "yellow":{
+            "options": ["yellow"]
+        },
+        "yellow_xh":{
+            "options": ["lubhelu"]
+        }
+    }
+}

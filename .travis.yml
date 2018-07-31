@@ -10,7 +10,8 @@ install:
   - pip install -r requirements/dev.txt
 script:
   - black . --check
-  - flake8 --max-line-length=88 --ignore=F405
+  - flake8 .
+  - py.test
 
 jobs:
   include:
