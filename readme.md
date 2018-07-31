@@ -6,8 +6,8 @@ A Django project that serves as a randomization engine for surveys on RapidPro.
 ## Tools
 - [`black`](https://github.com/ambv/black) - this repository uses an opinionated python code formatter, with a max line length of 88.
 - [`.editorconfig`](http://editorconfig.org/) - Use consistent styling checks across editors. Check whether your text editor has deafult support or requires a plugin.
-- [pre-commit](https://pre-commit.com) - Runs linters against staged code as a git pre-commit check. Can install and use linters in various languages.
-- [django-environ](http://django-environ.readthedocs.io/en/latest/) - helps configure django settings using environment variables and .env files.
+- [`pre-commit`](https://pre-commit.com) - Runs linters against staged code as a git pre-commit check. Can install and use linters in various languages.
+- [`django-environ`](http://django-environ.readthedocs.io/en/latest/) - helps configure django settings using environment variables and .env files.
 
 ## Name
 Lebombo is in reference to the [Lebombo Bone](https://en.wikipedia.org/wiki/Lebombo_bone), an African mathematical measuring instrument that is between 44,200 and 43,000 years old. It is theorised that it was used as a lunar calendar to track menstrual cycles.
