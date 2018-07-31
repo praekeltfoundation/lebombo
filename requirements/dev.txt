@@ -2,7 +2,7 @@
 pre-commit
 black
 flake8
-pytest
+pytest>=3.6
 pytest-django
 pytest-cov
 pytest-xdist
