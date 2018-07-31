@@ -43,7 +43,7 @@ jobs:
 
       before_deploy:
         - pip install docker-ci-deploy==0.3.0
-        - echo -n $REGISTRY_PASS | docker login -u "$REGISTRY_USER" --password-stdin # yamllint disable-line
+        - echo -n $REGISTRY_PASS | docker login --username "$REGISTRY_USER" --password-stdin # yamllint disable-line
       deploy:
         - provider: script
           script: dcd --version "$(git rev-parse --short HEAD)" --version-latest "$IMAGE_NAME" # yamllint disable-line
